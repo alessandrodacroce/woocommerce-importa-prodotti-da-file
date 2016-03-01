@@ -1,5 +1,5 @@
 <?php
-require_once ( $_SERVER['DOCUMENT_ROOT'] . "wp-load.php" );
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/wp-load.php" );
 
 if ( ! class_exists( 'WC_Import_Product' ) ) {
 	class WC_Import_Product {
