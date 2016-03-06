@@ -45,7 +45,7 @@ final class woo_importa_prodotti_plugin {
 	function gestione_plugin_main() {
 		$woo_import_product = ( isset($_GET["woo_import_product"]) ) ? $_GET["woo_import_product"] : 'false';
 		
-		if ( $woo_import_product == 'false' ) return ;
+		if ( $woo_import_product == '1' ) return ;
 		
         
         
