@@ -1,0 +1,5 @@
+0	COD000000011	Camicia bianca uomo L	Camicia bianca di buona fattura di ottima stoffa.	camicia		bianche			colore: bianca|taglia: L|sesso:maschile		Stoffa	H&M	17,9	25	50,99	35,9	http://url_foto/fotomin/nomefoto.jpg	http://url_foto/fotomed/nomefoto.jpg	http://url_foto/fotomax/nomefoto.jpg
+0	COD000000012	Camicia bianca uomo XL	Camicia bianca di buona fattura di ottima stoffa.	camicia		bianche			colore: bianca|taglia: XL|sesso:maschile	Stoffa	H&M	17,9	25	50,99	35,9	http://url_foto/fotomin/nomefoto.jpg	http://url_foto/fotomed/nomefoto.jpg	http://url_foto/fotomax/nomefoto.jpg
+
+Queste due righe sopra, sono esemplificative per come dovrà essere strutturato il file csv remote affinché possa funzionare con questo 
+plugin.
