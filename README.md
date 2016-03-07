@@ -48,6 +48,15 @@ Il plugin per poter funzionare ha bisogno di alcune informazioni, attualmente è
 Per poter eseguire il plugin basta collegarsi all'indirizzo http://www.tuo_dominio.com/?woo_import_product=1
 La variabile woo_import_product farà scattare il plugin che eseguirà i passi visti sopra.
 
+## Creazione prodotto variante
+Per creare il prodotto variante si deve procedere come segue
+1. Loggarsi al db tramite phpmyadmin
+2. Entrare nella tabella e visualizzare le righe dei prodotti
+3. Selezionare il prodotto che dovrà essere di tipo variante e le relative varaizioni
+4. Entrare in modifica ed inserire nella colonna CodArtIA un valore univoco ( sku del prodotto variante ) in tutte le righe cercate
+5. Per il primo dei prodotti,completare il codice con NomArtVar ( ossia il nome del prodotto principale )
+6. Per ogni riga completare il campo attributo e variazione es. Colore - Nero
+
 # FAQ
 Per ogni richiesta / domanda o aggiornamento vi prego di contattarmi attraverso il mio sito web alessandrodacroce.it.
 Ogni richiesta sarà valutata e cercherò di rispondere a tutte le domande, se si tratta di aggiornamento o aggiunta di specifiche se ritenute utili verranno aggiunte al plugin.
