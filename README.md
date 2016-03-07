@@ -51,7 +51,7 @@ La variabile woo_import_product farà scattare il plugin che eseguirà i passi v
 ## Creazione prodotto variante
 Per creare il prodotto variante si deve procedere come segue
   1. Loggarsi al db tramite phpmyadmin
-  2. Entrare nella tabella e visualizzare le righe dei prodotti
+  2. Entrare nella tabella (tbl_conversione) e visualizzare le righe dei prodotti
   3. Selezionare il prodotto che dovrà essere di tipo variante e le relative varaizioni
   4. Entrare in modifica ed inserire nella colonna CodArtIA un valore univoco ( sku del prodotto variante ) in tutte le righe cercate
   5. Per il primo dei prodotti,completare il codice con NomArtVar ( ossia il nome del prodotto principale )
