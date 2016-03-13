@@ -15,23 +15,22 @@ if ( !function_exists( 'add_action' ) ) {
     exit;
 }
 
-require_once ( 'class.php' );
-
 final class woo_importa_prodotti_plugin {
 	
 	// identifica l'oggetto della classe di gestione dell'importazione
 	public $_woo_ip_obj;
+	private $_settings;
 	
 	function __construct() {
 		// self::$instance =& $this;
 		
-		$this->_wooip_obj = new WC_Import_Product();
+		
 		
 		register_activation_hook	( __FILE__, array( &$this, 'woo_import_enable_plugin'     	   	) );
 		register_deactivation_hook	( __FILE__, array( &$this, 'woo_import_deactivate_plugin'       ) );
 		
 		// add_action					( 'plugins_loaded', array( &$this, 'myplugin_update_db_check' 	) );
-		add_action					( 'init', array( &$this, 'gestione_plugin_main' 				) );
+		add_action					( 'init', array( &$this, 'woo_import_init' 				) );
 	}
 	
 	function myplugin_update_db_check() {
@@ -42,31 +41,47 @@ final class woo_importa_prodotti_plugin {
 		*/
 	}
 	
-	function gestione_plugin_main() {
-		$woo_import_product = ( isset($_GET["woo_import_product"]) ) ? $_GET["woo_import_product"] : 'false';
+	function woo_import_init() {
 		
-		if ( $woo_import_product == '1' ) return ;
+		$this->woo_import_includes();
 		
-        
-        
-		$this->_wooip_obj->carica_file_csv_da_url ();
-        $this->_wooip_obj->aggiorna_db();
-        $this->_wooip_obj->filtra_db();
-        $this->_wooip_obj->aggiorna_tbl_conversione ();
-        $this->_wooip_obj->aggiorna_prodotti();	
-		 
+		$this->_settings = new WC_Woo_Import_Settings();
+		
+		$woo_import_product = ( isset($_GET["woo_import_product"]) ) ? $_GET["woo_import_product"] : '0';
+		
+		if ( $woo_import_product == '1' ) {
+		
+			$this->_wooip_obj = new WC_Woo_Import_Product();	
+			$this->_wooip_obj->carica_file_csv_da_url ();
+        	$this->_wooip_obj->aggiorna_db();
+        	$this->_wooip_obj->filtra_db();
+        	$this->_wooip_obj->aggiorna_tbl_conversione ();
+        	$this->_wooip_obj->aggiorna_prodotti();	
+		}
+	}
+	
+	function woo_import_includes() {
+		include_once ( $_SERVER['DOCUMENT_ROOT'] . "/wp-load.php" );
+		include_once ( 'wooip_class.php' );
+		include_once ( 'wooip_admin.php' );
 	}
 	
 	function woo_import_enable_plugin() {
-		if ( ! $this->_wooip_obj->_class_eneable ) { $this->_wooip_obj = new WC_Import_Product(); }
+		if ( ! $this->_wooip_obj->_class_eneable ) {
+			$this->wooip_includes();
+			$this->_wooip_obj = new WC_Import_Product(); 
+		}
 		$this->_wooip_obj->initialize_database();
 	}
 	
 	function woo_import_deactivate_plugin() {
-		if ( ! $this->_wooip_obj->_class_eneable ) { $this->_wooip_obj = new WC_Import_Product(); }
+		if ( ! $this->_wooip_obj->_class_eneable ) {
+			$this->wooip_includes();	
+			$this->_wooip_obj = new WC_Import_Product(); 
+		}
 		$this->_wooip_obj->delete_database();
 	}
-	
+			
 }
 
 new woo_importa_prodotti_plugin();
