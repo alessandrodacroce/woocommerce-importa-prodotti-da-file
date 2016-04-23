@@ -68,7 +68,7 @@ final class woo_importa_prodotti_plugin {
 	
 	function woo_import_enable_plugin() {
 		if ( ! $this->_wooip_obj->_class_eneable ) {
-			$this->wooip_includes();
+			$this->woo_import_includes();
 			$this->_wooip_obj = new WC_Import_Product(); 
 		}
 		$this->_wooip_obj->initialize_database();
@@ -76,7 +76,7 @@ final class woo_importa_prodotti_plugin {
 	
 	function woo_import_deactivate_plugin() {
 		if ( ! $this->_wooip_obj->_class_eneable ) {
-			$this->wooip_includes();	
+			$this->woo_import_includes();	
 			$this->_wooip_obj = new WC_Import_Product(); 
 		}
 		$this->_wooip_obj->delete_database();
